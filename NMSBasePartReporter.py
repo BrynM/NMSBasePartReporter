@@ -40,7 +40,7 @@ if __name__ == '__main__':
 		add_env_var_help=False
 	)
 	config_parser.add('-b', '--bases',
-		help='Examine bases. If neither --bases nor --outside are provided, both will be enabled as a default.',
+		help='Examine bases. If neither --bases nor --outside are provided and --csv is not used, both --bases and --outsidewill be enabled as a default.',
 		action='store_true',
 		default=configargparse.SUPPRESS,
 	)
@@ -52,7 +52,7 @@ if __name__ == '__main__':
 		type=str
 	)
 	config_parser.add('-c', '--csv',
-		help='Generate a Comma Separated Values (CSV) list of all base information.',
+		help='Generate a Comma Separated Values (CSV) list of all base information. Cannot be combined with --bases nor --outside.',
 		action='store_true',
 		default=configargparse.SUPPRESS,
 	)
@@ -62,7 +62,7 @@ if __name__ == '__main__':
 		default=configargparse.SUPPRESS,
 	)
 	config_parser.add('-o', '--outside', '--outside_bases',
-		help='Only examine parts built outside of bases. If neither --bases nor --outside are provided, both will be enabled as a default.',
+		help='Only examine parts built outside of bases such as save beacons. If neither --bases nor --outside are provided and --csv is not used, both --bases and --outside will be enabled as a default.',
 		default=configargparse.SUPPRESS,
 		action='store_true',
 	)

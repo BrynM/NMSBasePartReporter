@@ -29,19 +29,22 @@ Optional arguments:
                         (Default: "name")
   -b, --bases
                         Examine bases. If neither --bases nor --outside are
-                        provided, both will be enabled as a default.
+                        provided and --csv is not used, both --bases and
+                        --outsidewill be enabled as a default.
   -c, --csv
                         Generate a Comma Separated Values (CSV) list of all
-                        base information.
+                        base information. Cannot be combined with --bases nor
+                        --outside.
   -h, --help
                         Show this help message and exit
   -i, --individual
                         If examining bases, report totals for each individual
                         base. Ignored if not using the --bases flag.
   -o, --outside, --outside_bases
-                        Only examine parts built outside of bases. If neither
-                        --bases nor --outside are provided, both will be
-                        enabled as a default.
+                        Only examine parts built outside of bases such as save
+                        beacons. If neither --bases nor --outside are provided
+                        and --csv is not used, both --bases and --outside will
+                        be enabled as a default.
   -q, --quiet
                         Disable all output but errors.
   -s FILE_PATH, --save FILE_PATH, --save_path FILE_PATH
