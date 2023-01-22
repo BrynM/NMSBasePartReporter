@@ -3,7 +3,7 @@ Usage:
   NMSBasePartReporter.py [-h] [-b] [--bs SORT] [-c] [-i] [-o]
                                 [-s FILE_PATH] [-q] [-t] [-v] [-w]
 
-  (v1.0.0) A tool for reporting No Man's Sky base part usage in various ways.
+  (v1.0.1) A tool for reporting No Man's Sky base part usage in various ways.
 
 Optional arguments:
   --bs SORT, --base-sort SORT
@@ -13,32 +13,28 @@ Optional arguments:
                         (Default: "name")
   -b, --bases
                         Examine bases. If neither --bases nor --outside are
-                        provided, both will be enabled as a default. (Default:
-                        "False")
+                        provided, both will be enabled as a default.
   -c, --csv
                         Generate a Comma Separated Values (CSV) list of all
-                        base information. (Default: "False")
+                        base information.
   -h, --help
                         Show this help message and exit
   -i, --individual
                         If examining bases, report totals for each individual
-                        base. Ignored if not using the --bases flag. (Default:
-                        "False")
+                        base. Ignored if not using the --bases flag.
   -o, --outside, --outside_bases
                         Only examine parts built outside of bases. If neither
                         --bases nor --outside are provided, both will be
-                        enabled as a default. (Default: "False")
+                        enabled as a default.
   -q, --quiet
-                        Disable all output but errors. (Default: "False")
+                        Disable all output but errors.
   -s FILE_PATH, --save FILE_PATH, --save_path FILE_PATH
                         Path to NMS save file exported as JSON. (Default:
                         "save.hg.json")
   -t, --totals
-                        List part totals by object ID in reports (Default:
-                        "False")
+                        List part totals by object ID in reports
   -v, --verbose
-                        Enable verbose output to STDERR. (Default: "False")
+                        Enable verbose output to STDERR.
   -w, --warnings, --show-warnings
-                        Enable reporting warning messages to STDERR. (Default:
-                        "False")
+                        Enable reporting warning messages to STDERR.
 ```

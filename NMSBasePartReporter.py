@@ -34,6 +34,7 @@ if __name__ == '__main__':
 	config_parser.add('-b', '--bases',
 		help='Examine bases. If neither --bases nor --outside are provided, both will be enabled as a default.',
 		action='store_true',
+		default=configargparse.SUPPRESS,
 	)
 	config_parser.add('--bs', '--base-sort',
 		help='Sort order to use for base reproting when showing individual bases (see --individual) or outputting CSV (--csv).'+
@@ -45,13 +46,16 @@ if __name__ == '__main__':
 	config_parser.add('-c', '--csv',
 		help='Generate a Comma Separated Values (CSV) list of all base information.',
 		action='store_true',
+		default=configargparse.SUPPRESS,
 	)
 	config_parser.add('-i', '--individual',
 		help='If examining bases, report totals for each individual base. Ignored if not using the --bases flag.',
 		action='store_true',
+		default=configargparse.SUPPRESS,
 	)
 	config_parser.add('-o', '--outside', '--outside_bases',
 		help='Only examine parts built outside of bases. If neither --bases nor --outside are provided, both will be enabled as a default.',
+		default=configargparse.SUPPRESS,
 		action='store_true',
 	)
 	config_parser.add('-s', '--save', '--save_path',
@@ -62,18 +66,22 @@ if __name__ == '__main__':
 	)
 	config_parser.add('-q', '--quiet',
 		help='Disable all output but errors.',
+		default=configargparse.SUPPRESS,
 		action='store_true',
 	)
 	config_parser.add('-t', '--totals',
 		help='List part totals by object ID in reports',
+		default=configargparse.SUPPRESS,
 		action='store_true',
 	)
 	config_parser.add('-v', '--verbose',
 		help='Enable verbose output to STDERR.',
+		default=configargparse.SUPPRESS,
 		action='store_true',
 	)
 	config_parser.add('-w', '--warnings', '--show-warnings',
 		help='Enable reporting warning messages to STDERR.',
+		default=configargparse.SUPPRESS,
 		action='store_true',
 	)
 
