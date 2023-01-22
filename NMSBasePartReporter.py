@@ -43,14 +43,8 @@ if __name__ == '__main__':
 		type=str
 	)
 	config_parser.add('-c', '--csv',
-		help='Write details about bases to a comma separated values file at CSV_DESTINATION.'+
-			' You may include some template substitutions in your CSV file name.'+
-			' Valid substitutions are [TIMESTAMP] (the current Unix Epoch as a timestamp) and [SAVE_NAME] (the name of the save file being examined with ".json" and ".hg" removed).'+
-			' For example a CSV file name give as "bases_[SAVE_NAME]_[timestamp].csv" would be saved as something like "bases_save4_1674347708.csv".'
-			' If the destination file exists, it will be overwritten.',
-		default=configargparse.SUPPRESS,
-		metavar='CSV_DESTINATION',
-		type=str
+		help='Generate a Comma Separated Values (CSV) list of all base information.',
+		action='store_true',
 	)
 	config_parser.add('-i', '--individual',
 		help='If examining bases, report totals for each individual base. Ignored if not using the --bases flag.',
@@ -84,9 +78,15 @@ if __name__ == '__main__':
 	)
 
 	configured = config_parser.parse_args()
-	if not configured.bases or configured.outside:
+
+	if not configured.bases and not configured.outside:
 		configured.bases = True
 		configured.outside = True
+
+	if configured.csv:
+		configured.bases = False
+		configured.outside = False
+
 	configured.save_path = configured.save
 
 	if not hasattr(configured, 'csv') or configured.csv == configargparse.SUPPRESS:

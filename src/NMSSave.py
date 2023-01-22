@@ -41,36 +41,32 @@ class NMSSave:
 			self.out.err('Fatal exception trying to validate save file! Not valid NMS save data!', fatality=3)
 
 		self.populate_bases()
+		self.populate_strays()
 
 		if self.config.bases:
 			self.output_bases()
 
 		if self.config.outside:
-			self.populate_strays()
 			self.get_outside_parts_percentage()
 			self.output_outisde()
 
 		self.out.v('Base reporting complete.')
 
-		if len(self.config.csv) > 0:
+		if self.config.csv:
 			self.generate_bases_csv()
 
 		if self.out.is_verbose and not self.out.is_warning and self.out.warning_count > 0:
 			self.out.v("{}{} suppressed warning messages. Use the --warnings flag to show them or --help for more information.".format(OUTPUT_BANNERS['warning'], self.out.warning_count))
 
 	def generate_bases_csv(self):
-		fq_csv_path = normalize_path(self.config.csv, True, self.fq_save_file_path)
-		if fq_csv_path is None or len(fq_csv_path) < 1:
-			self.out.err('"{}" is not a valid name for CSV output!'.format(self.config.csv), fatality=10)
-		self.out.v("Writing base information to CSV file \"{}\"...".format(fq_csv_path))
-		if os.path.exists(fq_csv_path):
-			self.out.warn("Overwriting destination file \"{}\"!".format(fq_csv_path))
 		headers = [
 			'Name',
 			'Part Count,',
-			'% of Part Limit (' + str(NMS_BASE_PART_LIMIT) + ')',
+			'Part Limit',
+			'% of Part Limit',
 			'% of Used Parts',
-			'Invalid Part Count,',
+			'Invalid Part Count',
+			'% Invalid Parts',
 			'Game Mode',
 			'Galactic Address',
 			'Approximate Location',
@@ -89,18 +85,42 @@ class NMSSave:
 			csv_out = []
 			csv_out.append(base.base_name.replace('"', '\\"'))
 			csv_out.append(str(base.get_total_parts(include_invalid=True)))
+			csv_out.append(str(NMS_BASE_PART_LIMIT))
 			csv_out.append(str(self.get_base_parts_percentage(base.get_total_parts(include_invalid=True))))
 			csv_out.append(str(self.get_base_parts_percentage(base.get_total_parts(include_invalid=True), self.total_base_parts)))
 			csv_out.append(str(base.get_total_invalid_parts()))
+			csv_out.append(str(self.get_base_parts_percentage(base.get_total_invalid_parts(), base.get_total_parts(include_invalid=True))))
 			csv_out.append(base.GameMode['PresetGameMode'])
 			csv_out.append(base.galactic_address.hex())
-			csv_out.append(str(GalacticAddress.position_to_latlong(base.Position)))
+			pos_lat_long = GalacticAddress.position_to_latlong(base.Position)
+			if pos_lat_long == (None, None):
+				csv_out.append(OUTPUT_BANNERS['nil_value'])
+			else:
+				csv_out.append(str(pos_lat_long))
 			csv_out.append(epoch_to_local_date_string(base.LastUpdateTimestamp))
 			csv_out.append(epoch_to_utc_date_string(base.LastUpdateTimestamp))
 			csv_out.append(str(base.BaseVersion))
 			csv_out.append(str(base.OriginalBaseVersion))
 			csv_out.append(base.AutoPowerSetting['BaseAutoPowerSetting'])
 			final_out.append('"' + '", "'.join(csv_out) + '"')
+		# Do the outside of base parts
+		csv_out = []
+		csv_out.append(OUTPUT_BANNERS['outside_base'])
+		csv_out.append(str(self.strays.get_total(include_invalid=True)))
+		csv_out.append(str(NMS_STRAY_PART_LIMIT))
+		csv_out.append(str(self.get_outside_parts_percentage()))
+		csv_out.append(OUTPUT_BANNERS['nil_value'])
+		csv_out.append(str(self.strays.get_total_invalid()))
+		csv_out.append(str(self.get_base_parts_percentage(self.strays.get_total_invalid(), self.strays.get_total(include_invalid=True))))
+		csv_out.append(OUTPUT_BANNERS['nil_value'])
+		csv_out.append(OUTPUT_BANNERS['nil_value'])
+		csv_out.append(OUTPUT_BANNERS['nil_value'])
+		csv_out.append(OUTPUT_BANNERS['nil_value'])
+		csv_out.append(OUTPUT_BANNERS['nil_value'])
+		csv_out.append(OUTPUT_BANNERS['nil_value'])
+		csv_out.append(OUTPUT_BANNERS['nil_value'])
+		csv_out.append(OUTPUT_BANNERS['nil_value'])
+		final_out.append('"' + '", "'.join(csv_out) + '"')
 		print("\n".join(final_out))
 		#if not os.path.exists(self.fq_save_file_path) or not os.path.isfile(self.fq_save_file_path):
 		#csv_file = open(self.full_path + '.' + file_type, 'w+')

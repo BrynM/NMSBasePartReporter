@@ -13,6 +13,7 @@ OUTPUT_BANNERS = {
 	'error' : 'ERROR: ',
 	'freighter_base': '[Freighter Base]',
 	'invalid_part': '[Invalid part]',
+	'nil_value': '',
 	'outside_base': '[Outside Base]',
 	'unknown_thing': '[unknown]',
 	'verbose' : '(Verbose) ',
