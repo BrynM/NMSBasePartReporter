@@ -4,10 +4,22 @@ Usage:
                                 [-s FILE_PATH] [-q] [-t] [-v] [-w]
 
 Description:
-  A tool for reporting No Man's Sky base part usage in various ways. You can
-list totals for bases, parts outside of bases (like save beacons), and
+  A simple tool for reporting No Man's Sky base part usage in various ways.
+You can list totals for bases, parts outside of bases (like save beacons), and
 generate a CSV list of base stats. Each of these has individual options like
 sorting that can be leveraged to customise your output.
+
+  To use this tool, you will first need to export your chosen save file to
+JSON. You can do su using a save editor such as the one by goatfungus
+(https://github.com/goatfungus/NMSSaveEditor). After that you will need to
+ensure that you have Python 3.5+ working and the bits in requirements.txt
+installed.
+
+Version:
+  v1.0.1 Copyright 2023 Bryn Mosher - Released MIT License
+
+Source:
+  https://github.com/BrynM/NMSBasePartReporter
 
 Optional arguments:
   --bs SORT, --base-sort SORT
@@ -41,10 +53,4 @@ Optional arguments:
                         Enable verbose output to STDERR.
   -w, --warnings, --show-warnings
                         Enable reporting warning messages to STDERR.
-
-Version:
-  v1.0.1; Requires Python 3.5+
-
-Copyright:
-  2023 Bryn Mosher - Released MIT License
 ```

@@ -6,3 +6,5 @@ echo '```' >> HELPTEXT.md
 
 # At least at the beginning...
 cp -pv HELPTEXT.md README.md
+
+pipreqs --use-local --mode 'gt' --force ./

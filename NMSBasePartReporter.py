@@ -23,13 +23,17 @@ if __name__ == '__main__':
 		prog=os.path.basename(__file__),
 		usage=None,
 		description='Description:\n'+
-			'A tool for reporting No Man\'s Sky base part usage in various ways.'+
+			'A simple tool for reporting No Man\'s Sky base part usage in various ways.'+
 			' You can list totals for bases, parts outside of bases (like save beacons), and generate a CSV list of base stats.'+
-			' Each of these has individual options like sorting that can be leveraged to customise your output.',
+			' Each of these has individual options like sorting that can be leveraged to customise your output.'+
+			'\n\nTo use this tool, you will first need to export your chosen save file to JSON.'+
+			' You can do su using a save editor such as the one by goatfungus (https://github.com/goatfungus/NMSSaveEditor).'+
+			' After that you will need to ensure that you have Python 3.5+ working and the bits in requirements.txt installed.'+
+			'\n\nVersion:\n' + THIS_VERSION + ' Copyright 2023 Bryn Mosher - Released MIT License'+
+			'\n\nSource:\nhttps://github.com/BrynM/NMSBasePartReporter',
 		formatter_class=ProperHelpFormatter,
 		default_config_files=["part_report.ini"],
-		epilog='\n\nVersion:\n' + THIS_VERSION + '; Requires Python 3.5+'+
-			'\n\nCopyright:\n2023 Bryn Mosher - Released MIT License',
+		epilog=None,
 		conflict_handler='error',
 		add_help=True,
 		add_config_file_help=False,
