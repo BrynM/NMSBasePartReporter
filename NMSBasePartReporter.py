@@ -22,7 +22,7 @@ if __name__ == '__main__':
 	config_parser = configargparse.ArgParser(
 		prog=os.path.basename(__file__),
 		usage=None,
-		description="A tool for reporting No Man's Sky base part usage.",
+		description='(' + THIS_VERSION + ') A tool for reporting No Man\'s Sky base part usage in various ways.',
 		formatter_class=ProperHelpFormatter,
 		default_config_files=["part_report.ini"],
 		epilog="",
