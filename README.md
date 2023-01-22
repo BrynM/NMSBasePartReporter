@@ -1,9 +1,9 @@
 ```
 Usage:
-  NMSBasePartReporter.py [-h] [-b] [--bs SORT] [-c CSV_DESTINATION]
-                                [-i] [-o] [-s FILE_PATH] [-q] [-t] [-v] [-w]
+  NMSBasePartReporter.py [-h] [-b] [--bs SORT] [-c] [-i] [-o]
+                                [-s FILE_PATH] [-q] [-t] [-v] [-w]
 
-  A tool for reporting No Man's Sky base part usage.
+  (v1.0.0) A tool for reporting No Man's Sky base part usage in various ways.
 
 Optional arguments:
   --bs SORT, --base-sort SORT
@@ -15,17 +15,9 @@ Optional arguments:
                         Examine bases. If neither --bases nor --outside are
                         provided, both will be enabled as a default. (Default:
                         "False")
-  -c CSV_DESTINATION, --csv CSV_DESTINATION
-                        Write details about bases to a comma separated values
-                        file at CSV_DESTINATION. You may include some template
-                        substitutions in your CSV file name. Valid
-                        substitutions are [TIMESTAMP] (the current Unix Epoch
-                        as a timestamp) and [SAVE_NAME] (the name of the save
-                        file being examined with ".json" and ".hg" removed).
-                        For example a CSV file name give as
-                        "bases_[SAVE_NAME]_[timestamp].csv" would be saved as
-                        something like "bases_save4_1674347708.csv". If the
-                        destination file exists, it will be overwritten.
+  -c, --csv
+                        Generate a Comma Separated Values (CSV) list of all
+                        base information. (Default: "False")
   -h, --help
                         Show this help message and exit
   -i, --individual
