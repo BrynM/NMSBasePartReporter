@@ -22,12 +22,14 @@ if __name__ == '__main__':
 	config_parser = configargparse.ArgParser(
 		prog=os.path.basename(__file__),
 		usage=None,
-		description='A tool for reporting No Man\'s Sky base part usage in various ways.'+
+		description='Description:\n'+
+			'A tool for reporting No Man\'s Sky base part usage in various ways.'+
 			' You can list totals for bases, parts outside of bases (like save beacons), and generate a CSV list of base stats.'+
 			' Each of these has individual options like sorting that can be leveraged to customise your output.',
 		formatter_class=ProperHelpFormatter,
 		default_config_files=["part_report.ini"],
-		epilog='(' + THIS_VERSION + ') Requires Python 3.5+',
+		epilog='\n\nVersion:\n' + THIS_VERSION + '; Requires Python 3.5+'+
+			'\n\nCopyright:\n2023 Bryn Mosher - Released MIT License',
 		conflict_handler='error',
 		add_help=True,
 		add_config_file_help=False,
