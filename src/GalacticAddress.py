@@ -1,3 +1,7 @@
+import math
+
+from constants import *
+
 class GalacticAddress:
 	def __init__(self, value):
 		self.raw_value = value
