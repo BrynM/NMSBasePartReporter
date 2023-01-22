@@ -2,7 +2,7 @@ import re
 
 # Used for padding large numbers in sorted strings
 ARBITRARY_NUMBER_SIZE = 16
-THIS_VERSION='v1.0.1'
+THIS_VERSION='v1.0.2'
 BASE_COMPUTER_OBJECTID = '^BASE_FLAG'
 DATETIME_FORMAT_LOCAL = '%a %Y-%m-%d %H:%M:%S'
 DATETIME_FORMAT_UTC = '%a %Y-%m-%d %H:%M:%S UTC'
