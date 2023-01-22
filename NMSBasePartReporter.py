@@ -12,6 +12,7 @@ import re
 import sys
 import time
 
+sys.path.append(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'src'))
 from ProperHelpFormatter import ProperHelpFormatter
 import NMSDetails
 
