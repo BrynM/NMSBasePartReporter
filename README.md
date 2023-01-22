@@ -3,7 +3,10 @@ Usage:
   NMSBasePartReporter.py [-h] [-b] [--bs SORT] [-c] [-i] [-o]
                                 [-s FILE_PATH] [-q] [-t] [-v] [-w]
 
-  (v1.0.1) A tool for reporting No Man's Sky base part usage in various ways.
+  A tool for reporting No Man's Sky base part usage in various ways. You can
+list totals for bases, parts outside of bases (like save beacons), and
+generate a CSV list of base stats. Each of these has individual options like
+sorting that can be leveraged to customise your output.
 
 Optional arguments:
   --bs SORT, --base-sort SORT
@@ -37,4 +40,6 @@ Optional arguments:
                         Enable verbose output to STDERR.
   -w, --warnings, --show-warnings
                         Enable reporting warning messages to STDERR.
+
+  (v1.0.1) Requires Python 3.5+
 ```

@@ -22,10 +22,12 @@ if __name__ == '__main__':
 	config_parser = configargparse.ArgParser(
 		prog=os.path.basename(__file__),
 		usage=None,
-		description='(' + THIS_VERSION + ') A tool for reporting No Man\'s Sky base part usage in various ways.',
+		description='A tool for reporting No Man\'s Sky base part usage in various ways.'+
+			' You can list totals for bases, parts outside of bases (like save beacons), and generate a CSV list of base stats.'+
+			' Each of these has individual options like sorting that can be leveraged to customise your output.',
 		formatter_class=ProperHelpFormatter,
 		default_config_files=["part_report.ini"],
-		epilog="",
+		epilog='(' + THIS_VERSION + ') Requires Python 3.5+',
 		conflict_handler='error',
 		add_help=True,
 		add_config_file_help=False,
@@ -87,6 +89,24 @@ if __name__ == '__main__':
 
 	configured = config_parser.parse_args()
 
+	# Set these since their defaults are suppressed
+	if not hasattr(configured, 'bases'):
+		configured.bases = False
+	if not hasattr(configured, 'csv'):
+		configured.csv = False
+	if not hasattr(configured, 'individual'):
+		configured.individual = False
+	if not hasattr(configured, 'outside'):
+		configured.outside = False
+	if not hasattr(configured, 'quiet'):
+		configured.quiet = False
+	if not hasattr(configured, 'totals'):
+		configured.totals = False
+	if not hasattr(configured, 'verbose'):
+		configured.verbose = False
+	if not hasattr(configured, 'warnings'):
+		configured.warnings = False
+
 	if not configured.bases and not configured.outside:
 		configured.bases = True
 		configured.outside = True
@@ -96,9 +116,6 @@ if __name__ == '__main__':
 		configured.outside = False
 
 	configured.save_path = configured.save
-
-	if not hasattr(configured, 'csv') or configured.csv == configargparse.SUPPRESS:
-		configured.csv = ''
 
 	if not configured.bs in VALID_SORTS:
 		configured.bs = 'name'

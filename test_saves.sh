@@ -9,3 +9,5 @@ function do_testing () {
 for FILE in ./saves/*.json; do
 	do_testing ${FILE} $@
 done
+
+./generate_help.sh
